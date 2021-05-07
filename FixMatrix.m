@@ -15,7 +15,7 @@ function newm = FixMatrix(matrix)
 
             if double(matrix(i,j))==0
                 %newm(i,j)=maxMatrix;
-                newm(i,j)=maxMatrix;
+                newm(i,j)=NaN;
             else
                 %newm(i,j) = double(matrix(i,j))/double(maxMatrix);
                 newm(i,j) = double(matrix(i,j));

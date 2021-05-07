@@ -1,30 +1,24 @@
-nFacce = 0
-key = [];
-value = [];
-for i = 1:200
-    if DepthDATA{i}{8} == 0.5
-        i
+hold on
+nFacce = 0;
+nNonFacce = 0;
+maxG = 300
+maxR = 300
+for i = 1:1000
+    i
+    map = nPixels(matriceMedia(DepthDATA{i}{3}), 2, 100);
+    key = cell2mat(keys(map))';
+    value = cell2mat(values(map))';
+    ids = i*ones(size(key,1),1);
+    if DepthDATA{i}{8} == 0.5 & maxG > 0
+        plot3(key, value, ids, 'g.');
         nFacce = nFacce + 1;
-        map = nPixels(FixMatrix(DepthDATA{i}{3}), 2);
-        key = [key cell2mat(keys(map))];
-        value = [value cell2mat(values(map))];
-    end
-end
-plot(key, value, '.');
-title(["FACCE " num2str(nFacce)]);
-
-figure;
-nNonFacce = 0
-key = [];
-value = [];
-for i = 1:200
-    if DepthDATA{i}{8} == 1
-        i
+        maxG = maxG - 1;
+    elseif maxR > 0
+        plot3(key, value, ids, 'r.');
         nNonFacce = nNonFacce + 1;
-        map = nPixels(FixMatrix(DepthDATA{i}{3}), 2);
-        key = [key cell2mat(keys(map))];
-        value = [value cell2mat(values(map))];
+        maxR = maxR - 1;
     end
 end
-plot(key, value, '.');
-title(["NON FACCE " num2str(nNonFacce)]);
+
+legend(strcat("FACCE (", num2str(nFacce), ")"), strcat("NON FACCE (", num2str(nNonFacce), ")"))
+hold off

@@ -1,8 +1,10 @@
-function nPixels = nPixels(matrix, error)
+function nPixels = nPixels(matrix, error, stdSize)
     minMatrix = min(matrix(:));
     maxMatrix = max(matrix(:));
-    delta = maxMatrix - minMatrix;
-    interval = delta/100 * error;
+    meanM = mean(matrix(:), 'omitnan');
+    variance = var(matrix(:), 'omitnan');
+    delta = maxMatrix-minMatrix;
+    interval = delta * error/100;
     depthKeys = [];
     depthValues = [];
     
@@ -18,7 +20,9 @@ function nPixels = nPixels(matrix, error)
                 maxValue = (matrix(i,j) + interval);
                 pos = search(depthKeys, minValue, maxValue);
                 if pos ~= -1
+                    depthKeys(pos) = (depthKeys(pos) * depthValues(pos)) + matrix(i,j);
                     depthValues(pos) = depthValues(pos) + 1;
+                    depthKeys(pos) = depthKeys(pos)/depthValues(pos); %aggiorno la media della depth
                 else
                     depthKeys = [depthKeys; matrix(i, j)];
                     depthValues = [depthValues; 1];
@@ -26,8 +30,11 @@ function nPixels = nPixels(matrix, error)
             end
         end
     end
+    %normalizzo i valori
     for i=1:size(depthKeys)
-        depthKeys(i) = depthKeys(i)/delta;
+        %depthKeys(i) = (depthKeys(i)-meanM)/variance;
+        depthKeys(i) = (depthKeys(i)-minMatrix)/delta;
+        depthValues(i) = (depthValues(i) * power(stdSize,2))/(height*length);
     end
     nPixels = containers.Map(depthKeys,depthValues);
 end
