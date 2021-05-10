@@ -1,4 +1,4 @@
-function newm = FixMatrix(matrix)
+function newm = FixMatrix(matrix, zeroValue)
     minMatrix = min(matrix(:));
     maxMatrix = max(matrix(:));
     
@@ -15,7 +15,7 @@ function newm = FixMatrix(matrix)
 
             if double(matrix(i,j))==0
                 %newm(i,j)=maxMatrix;
-                newm(i,j)=NaN;
+                newm(i,j)=zeroValue;
             else
                 %newm(i,j) = double(matrix(i,j))/double(maxMatrix);
                 newm(i,j) = double(matrix(i,j));

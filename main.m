@@ -7,7 +7,7 @@ plot3(NaN, NaN, NaN, 'g.');
 plot3(NaN, NaN, NaN, 'r.');
 for i = 1:1000
     i
-    map = nPixels(matriceMedia(DepthDATA{i}{3}), 2, 100);
+    map = nPixels(matriceMedia(DepthDATA{i}{3}, NaN), 2, 100);
     key = cell2mat(keys(map))';
     value = cell2mat(values(map))';
     ids = i*ones(size(key,1),1);
@@ -35,7 +35,7 @@ plot3(NaN, NaN, NaN, 'g.');
 plot3(NaN, NaN, NaN, 'r.');
 for i = 1:1000
     i
-    map = meanVar(FixMatrix(DepthDATA{i}{3}));
+    map = meanVar(FixMatrix(DepthDATA{i}{3}, NaN));
     key = map(1);
     value = map(2);
     ids = i;

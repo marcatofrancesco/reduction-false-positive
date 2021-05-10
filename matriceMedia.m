@@ -1,6 +1,6 @@
-function matriceMedia = matriceMedia(matrix)
+function matriceMedia = matriceMedia(matrix, zeroValue)
     % fix la matrice sistemando i valori =0
-    matrix = FixMatrix(matrix);
+    matrix = FixMatrix(matrix, zeroValue);
     
     sizes = size(matrix);
     
