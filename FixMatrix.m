@@ -15,7 +15,11 @@ function newm = FixMatrix(matrix, zeroValue)
 
             if double(matrix(i,j))==0
                 %newm(i,j)=maxMatrix;
-                newm(i,j)=zeroValue;
+                if ~exist('zeroValue','var')
+                    newm(i,j)=maxMatrix;
+                else
+                    newm(i,j)=zeroValue;
+                end
             else
                 %newm(i,j) = double(matrix(i,j))/double(maxMatrix);
                 newm(i,j) = double(matrix(i,j));
