@@ -25,7 +25,7 @@ Si nota quindi una maggiore precisione ma diminuendo di molto anche i risultati 
 
 ## Prove e problemi Cluster
 tutte le varie prove sono state effettuate usando un kmeans che deve trovare 2 cluster usando la distanza euclidea
-### Cluster con 2 dati, risultato metodo 1 e valore assoluto della vertice.
+### Metodo3: Cluster con 2 dati, risultato metodo 1 e valore assoluto della vertice.
 i vertici con valore assoluto > 500 li ho tolti ed impostati a 500 perchè li ho considerati come outlier visto che comunque poi creavano ul cluster a se' visto che hanno questi valori improponibili.
 codice per effettuare il cluster: 
     
