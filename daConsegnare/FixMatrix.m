@@ -8,8 +8,6 @@ function newm = FixMatrix(matrix, zeroValue)
     %estraggo altezza e largezza della matrice
     height = sizes(1); 
     length = sizes(2);
-    
-    newm = zeros(height, length); %inizializzo una nuova matrice piena di zeri
 
     for i = 1:height
         for j = 1:length
