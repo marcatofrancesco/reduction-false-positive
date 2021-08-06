@@ -1,4 +1,4 @@
-% stampa ad output i rusultati del cluster
+% stampa ad output i risultati del cluster
 giuste = 0;
 sbagliate = 0;
 nonIndividuate = 0;
