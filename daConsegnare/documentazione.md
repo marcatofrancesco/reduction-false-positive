@@ -12,7 +12,6 @@ Se il vertice della parabola ottenuta con regressione parabolica si trova nei co
 
 ## Pseudocodice
 ```
-
 Per ogni elemento di DepthDATA:
   matrix = DepthDATA{i}{2}; 
   fixedMatrix = FixMatrix(matrix);
@@ -25,7 +24,6 @@ Per ogni elemento di DepthDATA:
       //contrassegno come NonFace
   else:
       //contrassegno come Face
-      
 ```
 
 # Analisi Complessità Temporale
