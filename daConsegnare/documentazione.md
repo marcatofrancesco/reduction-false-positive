@@ -1,7 +1,29 @@
 # Descrizione Metodo
 ## Descrizione Testuale
-(bisogna scriviere che abbiamo usato la funzione fit del Curve Fitting Toolbox)
+Data la matrice DepthDATA, considero per ogni elemento il campo (indice 2) contenente la matrice di valori di profondità.
+Richiamo quindi il metodo "FixMatrix" che va a sostituire nella matrice di profondità i valori 0 con il massimo delle profondità presenti nella matrice.
+I valori a 0 di Depth infatti, indicano un "errore" nella determinazione della profondità da parte del sensore; nella maggior parte dei casi l'errore è causato da elementi troppo lontani dal sensore. Per questo vengono posizionati sulla massima profondità, ovvero sullo "sfondo".
+
+Dalla matrice modificata viene poi presa la riga centrale, e si effettua una "regressione parabolica" sui valori della riga centrale.
+Per la regressione parabolica si usa la funzione fit del Curve Fitting Toolbox.
+
+I coefficienti vengono poi usati per calcolare la posizione in ascissa del vertice.
+Se il vertice della parabola ottenuta con regressione parabolica si trova nei confini della matrice dell'immagine allora contrassegno l'immagine come Face, altrimenti come NonFace.
+
 ## Pseudocodice
+Per ogni elemento di DepthDATA:
+  matrix = DepthDATA{i}{2}; 
+  fixedMatrix = FixMatrix(matrix);
+  matrixCenter = round(size(fixedMatrix, 1)/2);
+  centralrow = fixedMatrix(matrixCenter,:);
+  f = parabolic_fit(centralrow);
+  coefficientValues = coeffvalues(f);
+  vertice = -coefficientValues(2)/(2 * coefficientValues(1)); // -b/2a
+  if(vertice < 0 or vertice > size(fixedMatrix, 1)):
+      //contrassegno come NonFace
+  else:
+      //contrassegno come Face
+
 # Analisi Complessità Temporale
 Per analizzare la complessità del metodo si tiene conto della complessità temporale delle seguenti funzioni utilizzate:
 - <img src="https://latex.codecogs.com/svg.latex?\small&space;size&space;=&space;O(1)" title="\small size = O(1)" />
