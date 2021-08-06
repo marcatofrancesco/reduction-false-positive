@@ -11,6 +11,8 @@ I coefficienti vengono poi usati per calcolare la posizione in ascissa del verti
 Se il vertice della parabola ottenuta con regressione parabolica si trova nei confini della matrice dell'immagine allora contrassegno l'immagine come Face, altrimenti come NonFace.
 
 ## Pseudocodice
+```
+
 Per ogni elemento di DepthDATA:
   matrix = DepthDATA{i}{2}; 
   fixedMatrix = FixMatrix(matrix);
@@ -23,6 +25,8 @@ Per ogni elemento di DepthDATA:
       //contrassegno come NonFace
   else:
       //contrassegno come Face
+      
+```
 
 # Analisi Complessità Temporale
 Per analizzare la complessità del metodo si tiene conto della complessità temporale delle seguenti funzioni utilizzate:
