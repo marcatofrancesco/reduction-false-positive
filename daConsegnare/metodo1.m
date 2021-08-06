@@ -1,6 +1,6 @@
 % il seguente metodo popolerà l'array results con i risultati del metodo. ogni indice nell'array corrisponde alla corrispondente immagine in DepthDATA con lo stesso indice. I risultiati sono cos' rappresentati: 1--> non face, 0.5 --> face
 
-results = []; %inizializzo l'array results vuoto
+results = zeros(size(transpose(DepthDATA),1), 1); %inizializzo l'array results vuoto
 
 for i = 1:size(transpose(DepthDATA)) % analizzo tutte le immagini presenti in DepthDATA
 
@@ -13,7 +13,7 @@ for i = 1:size(transpose(DepthDATA)) % analizzo tutte le immagini presenti in De
     
     % preparo i dati per effettuare il fit e la regressione parabolica
     x = transpose(1:size(centralrow, 2));
-    y = transpose(centralrow);
+    y = double(transpose(centralrow));
     
     f=fit(x,y,'poly2'); % effettuo la regressione parabolica
 
@@ -21,7 +21,12 @@ for i = 1:size(transpose(DepthDATA)) % analizzo tutte le immagini presenti in De
 
     vertice = -coefficientValues(2)/(2.*coefficientValues(1));  % individuo il vertice della parabola
 
-    if (vertice<0 || vertice>size(fixedMatrix, 1)) % controllo che il vertice sia esterno all'immagine
+    marginRate = 1.14;
+    
+    firstMargin = matrixCenter - marginRate*size(fixedMatrix, 1);
+    secondMargin = matrixCenter + marginRate*size(fixedMatrix, 1);
+    
+    if (vertice<firstMargin || vertice>secondMargin) || coefficientValues(1) < 0 % controllo che il vertice sia esterno all'immagine
 
         results(i, 1) = 1; % se il vertice è all'esterno dell'immagine, essa viene identificata come nonFace
     else
