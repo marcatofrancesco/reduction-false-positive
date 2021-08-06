@@ -17,7 +17,7 @@ D'ora in avanti considereremo:
 
 <img src="https://latex.codecogs.com/svg.latex?\small&space;m&space;=&space;dimensione&space;\&space;totale&space;\&space;dell'immagine" title="\small m = dimensione \ totale \ dell'immagine" />
 
-Il metodo quindi ha complessità temporale pari a $ O(n*m^2) $ in quanto per ogni immagine viene calcolato il massimo una volta e poi viene effettuato il controllo degli zeri sulla matrice, valore per valore.
+Il metodo quindi ha complessità temporale pari a  <img src="https://latex.codecogs.com/svg.latex?\small&space;O(n*m^2)" title="\small O(n*m^2)" />  in quanto per ogni immagine viene calcolato il massimo una volta e poi viene effettuato il controllo degli zeri sulla matrice, valore per valore.
 
 # Risultati e Prestazione del metodo
 <img src="https://latex.codecogs.com/svg.latex?\small&space;Precision&space;=&space;\frac{TruePositive}{TruePositive&plus;FalsePositive}&space;=&space;\frac{389}{389&plus;34}=&space;0,9196&space;\backsimeq&space;92&space;\%" title="\small Precision = \frac{TruePositive}{TruePositive+FalsePositive} = \frac{389}{389+34}= 0,9196 \backsimeq 92 \%" />
