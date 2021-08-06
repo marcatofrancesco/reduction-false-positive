@@ -15,8 +15,6 @@ D'ora in avanti considereremo:
 
 <img src="https://latex.codecogs.com/svg.latex?\small&space;n&space;=&space;numero&space;\&space;di&space;\&space;immagini" title="\small n = numero \ di \ immagini" />    
 
-<br>
-
 <img src="https://latex.codecogs.com/svg.latex?\small&space;m&space;=&space;dimensione&space;\&space;totale&space;\&space;dell'immagine" title="\small m = dimensione \ totale \ dell'immagine" />
 
 Il metodo quindi ha complessità temporale pari a $ O(n*m^2) $ in quanto per ogni immagine viene calcolato il massimo una volta e poi viene effettuato il controllo degli zeri sulla matrice, valore per valore.
