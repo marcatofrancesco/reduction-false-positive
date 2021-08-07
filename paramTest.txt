@@ -302,4 +302,53 @@ NonFace non individuate:
 
 Totale NonFace: 
         1414
+		
+_______________________________________
 
+MarginRate: 1.32
+
+NonFace correttamente individuate: 
+   627
+
+NonFace erratamente individuate: 
+    39
+
+NonFace non individuate: 
+   787
+
+Totale NonFace: 
+        1414
+
+_______________________________________
+
+MarginRate: 1.5
+
+NonFace correttamente individuate: 
+   616
+
+NonFace erratamente individuate: 
+    36
+
+NonFace non individuate: 
+   798
+
+Totale NonFace: 
+        1414
+		
+		
+		
+_______________________________________
+
+Senza metodo del vertice
+
+NonFace correttamente individuate: 
+   498
+
+NonFace erratamente individuate: 
+    29
+
+NonFace non individuate: 
+   916
+
+Totale NonFace: 
+        1414

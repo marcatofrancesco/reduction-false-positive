@@ -21,7 +21,9 @@ for i = 1:size(transpose(DepthDATA)) % analizzo tutte le immagini presenti in De
 
     vertice = -coefficientValues(2)/(2.*coefficientValues(1));  % individuo il vertice della parabola
 
-    marginRate = 1.14;
+    % marginRate = 1.14;
+    
+    marginRate = 0.66;
     
     firstMargin = matrixCenter - marginRate*size(fixedMatrix, 1);
     secondMargin = matrixCenter + marginRate*size(fixedMatrix, 1);
