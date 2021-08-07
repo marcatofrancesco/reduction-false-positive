@@ -21,6 +21,15 @@ Il coefficiente marginRate arbitrario che indica quanto ci si distanzia dal cent
 
 Nel caso in cui il vertice della parabola ottenuta con regressione parabolica si trovi all'esterno del range definito dai due margini OPPURE se il coefficiente di secondo grado è negativo, allora contrassegno l'immagine come NonFace, altrimenti come NonFace.
 
+Si può infatti notare come in una immagine Face dovrebbe avere valore più bassi (quindi più vicini alla
+camera) verso il centro della matrice (naso, ecc.) come nel seguente fit: 
+
+<img src="https://github.com/marcatofrancesco/reduction-false-positive/raw/main/images/mail1.jpg">
+
+Che invece non è il caso di una NonFace: 
+
+<img src="https://github.com/marcatofrancesco/reduction-false-positive/raw/main/images/mail2.jpg">
+
 Il marginRate è stato quindi scelto sulla base del miglior compromesso tra Precision e Recall.
 
 <img src="https://github.com/marcatofrancesco/reduction-false-positive/raw/main/images/testingGraph.png">
@@ -69,7 +78,9 @@ D'ora in avanti considereremo:
 Il metodo quindi ha complessità temporale pari a  <img src="https://latex.codecogs.com/svg.latex?\small&space;O(n*m^2)" title="\small O(n*m^2)" />  in quanto per ogni immagine viene calcolato il massimo una volta e poi viene effettuato il controllo degli zeri sulla matrice, valore per valore.
 
 # Risultati e Prestazione del metodo
+Il metodo ottiene quidi i seguenti risultati in termini di recall e precision:
 <img src="https://latex.codecogs.com/svg.latex?\small&space;Precision&space;=&space;\frac{TruePositive}{TruePositive&plus;FalsePositive}&space;=&space;\frac{711}{711&plus;49}=&space;0,9355&space;\backsimeq&space;94&space;\%" title="\small Precision = \frac{TruePositive}{TruePositive+FalsePositive} = \frac{711}{711+49}= 0,9355 \backsimeq 94 \%" />
 
 
 <img src="https://latex.codecogs.com/svg.latex?\small&space;Recall&space;=&space;\frac{TruePositive}{TruePositive&plus;FalseNegative}&space;=&space;\frac{711}{711&plus;703}=&space;0,5028&space;\backsimeq&space;50&space;\%" title="\small Recall = \frac{TruePositive}{TruePositive+FalseNegative} = \frac{711}{711+703}= 0,5028 \backsimeq 50 \%" />
+Infatti vengono individuate correttamente 711 non Face con soli 49 falsi positivi.
