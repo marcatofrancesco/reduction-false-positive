@@ -8,7 +8,18 @@ Dalla matrice modificata viene poi presa la riga centrale, e si effettua una "re
 Per la regressione parabolica si usa la funzione fit del Curve Fitting Toolbox.
 
 I coefficienti vengono poi usati per calcolare la posizione in ascissa del vertice.
-Se il vertice della parabola ottenuta con regressione parabolica si trova nei confini della matrice dell'immagine allora contrassegno l'immagine come Face, altrimenti come NonFace.
+
+Definisco due margini calcolati come segue:
+
+<img src="https://latex.codecogs.com/svg.image?A&space;=&space;matrixCenter&space;-&space;marginRate&space;\times&space;matrixWidth" title="A = matrixCenter - marginRate \times matrixWidth" />
+
+<img src="https://latex.codecogs.com/svg.image?B&space;=&space;matrixCenter&space;&plus;&space;marginRate&space;\times&space;matrixWidth" title="B = matrixCenter + marginRate \times matrixWidth" />
+
+Dove matrixCenter è la posizione della colonna centrale della matrice di profondità e matrixWidth è la larghezza della matrice.
+
+Il coefficiente marginRate indica quanto ci si distanza dal centro della matrice nel considerare i margin.
+
+Nel caso in cui il vertice della parabola ottenuta con regressione parabolica si trovi all'esterno del range definito dai due margini OPPURE se il coefficiente di secondo grado è negativo, allora contrassegno l'immagine come NonFace, altrimenti come NonFace.
 
 ## Pseudocodice
 ```
@@ -20,7 +31,11 @@ Per ogni elemento di DepthDATA:
   f = parabolic_fit(centralrow);
   coefficientValues = coeffvalues(f);
   vertice = -coefficientValues(2)/(2 * coefficientValues(1)); // -b/2a
-  if(vertice < 0 or vertice > size(fixedMatrix, 1)):
+  marginRate = 0.66;
+  marginA = matrixHCenter - marginRate*size(fixedMatrix, 1);
+  marginB = matrixHCenter + marginRate*size(fixedMatrix, 1);
+  
+  if(vertice < marginA or vertice > marginB or coefficientValues(1) < 0):
       //contrassegno come NonFace
   else:
       //contrassegno come Face
