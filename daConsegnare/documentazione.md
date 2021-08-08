@@ -11,11 +11,11 @@ I coefficienti vengono poi usati per calcolare la posizione in ascissa del verti
 
 Definisco due margini calcolati come segue:
 
-<img src="https://latex.codecogs.com/svg.image?A&space;=&space;matrixCenter&space;-&space;marginRate&space;\times&space;matrixWidth" title="A = matrixCenter - marginRate \times matrixWidth" />
+<img src="https://latex.codecogs.com/svg.image?A&space;=&space;matrixHCenter&space;-&space;marginRate&space;\times&space;matrixWidth" title="A = matrixHCenter - marginRate \times matrixWidth" />
 
-<img src="https://latex.codecogs.com/svg.image?B&space;=&space;matrixCenter&space;&plus;&space;marginRate&space;\times&space;matrixWidth" title="B = matrixCenter + marginRate \times matrixWidth" />
+<img src="https://latex.codecogs.com/svg.image?B&space;=&space;matrixHCenter&space;&plus;&space;marginRate&space;\times&space;matrixWidth" title="B = matrixHCenter + marginRate \times matrixWidth" />
 
-Dove matrixCenter è la posizione della colonna centrale della matrice di profondità e matrixWidth è la larghezza della matrice.
+Dove matrixHCenter è la posizione della colonna centrale della matrice di profondità e matrixWidth è la larghezza della matrice.
 
 Il coefficiente marginRate arbitrario che indica quanto ci si distanzia dal centro della matrice nel considerare i margini.
 
