@@ -36,7 +36,7 @@ Per ogni elemento con indice i di DepthDATA:
   matrix = DepthDATA{i}{2}; 
   fixedMatrix = FixMatrix(matrix);
   matrixVCenter = round(size(fixedMatrix, 1)/2);
-  centralrow = fixedMatrix(matrixCenter,:);
+  centralrow = fixedMatrix(matrixVCenter,:);
   f = parabolic_fit(centralrow);
   coefficientValues = coeffvalues(f);
   vertice = -coefficientValues(2)/(2 * coefficientValues(1)); // -b/2a
