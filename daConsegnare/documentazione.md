@@ -17,9 +17,18 @@ Definisco due margini calcolati come segue:
 
 Dove matrixCenter è la posizione della colonna centrale della matrice di profondità e matrixWidth è la larghezza della matrice.
 
-Il coefficiente marginRate indica quanto ci si distanza dal centro della matrice nel considerare i margin.
+Il coefficiente marginRate arbitrario che indica quanto ci si distanzia dal centro della matrice nel considerare i margini.
 
 Nel caso in cui il vertice della parabola ottenuta con regressione parabolica si trovi all'esterno del range definito dai due margini OPPURE se il coefficiente di secondo grado è negativo, allora contrassegno l'immagine come NonFace, altrimenti come NonFace.
+
+Il marginRate è stato quindi scelto sulla base del miglior compromesso tra Precision e Recall.
+
+<img src="https://github.com/marcatofrancesco/reduction-false-positive/raw/main/images/testingGraph.png">
+
+Come si può vedere nel grafico all'aumentare del marginRate la Precision aumenta a discapito del Recall.
+E' stato scelto per questo un marginRate di 0,58.
+
+
 
 ## Pseudocodice
 ```
@@ -31,7 +40,7 @@ Per ogni elemento di DepthDATA:
   f = parabolic_fit(centralrow);
   coefficientValues = coeffvalues(f);
   vertice = -coefficientValues(2)/(2 * coefficientValues(1)); // -b/2a
-  marginRate = 0.66;
+  marginRate = 0.58;
   marginA = matrixHCenter - marginRate*size(fixedMatrix, 1);
   marginB = matrixHCenter + marginRate*size(fixedMatrix, 1);
   
