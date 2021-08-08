@@ -1,6 +1,6 @@
 % il seguente metodo popolerà l'array results con i risultati del metodo. ogni indice nell'array corrisponde alla corrispondente immagine in DepthDATA con lo stesso indice. I risultiati sono cos' rappresentati: 1--> non face, 0.5 --> face
 
-marginRate = 0.66
+marginRate = 0.58;
 
 results = zeros(size(transpose(DepthDATA),1), 1); %inizializzo l'array results vuoto
 
