@@ -10,7 +10,7 @@ for i = 1:size(transpose(DepthDATA)) % analizzo tutte le immagini presenti in De
 	maxMatrix = max(matrix(:)); % individuo il valore massimo all'interno della matrice
 
 	fixedMatrix = FixMatrix(matrix, maxMatrix); % aggiusto i valori che sono =0, quindi catturati erroneamente dal depth sensor
-	matrixVCenter = round(size(fixedMatrix, 1)/2); % trovo il centro della matrice
+	matrixVCenter = round(size(fixedMatrix, 1)/2); % trovo la riga centrale della matrice
 	centralrow = fixedMatrix(matrixVCenter,:); % salvo nell'array centralrow i valori della riga centrale della metrice fixedMatrix
 
 	% preparo i dati per effettuare il fit e la regressione parabolica
@@ -23,12 +23,12 @@ for i = 1:size(transpose(DepthDATA)) % analizzo tutte le immagini presenti in De
 
 	vertice = -coefficientValues(2)/(2.*coefficientValues(1));  % individuo il vertice della parabola
 
-	matrixHCenter = round(size(fixedMatrix, 2)/2);
+	matrixHCenter = round(size(fixedMatrix, 2)/2); % trovo la colonna centrale della matrice
 
-	marginA = matrixHCenter - marginRate*size(fixedMatrix, 1);
-	marginB = matrixHCenter + marginRate*size(fixedMatrix, 1);
+	marginA = matrixHCenter - marginRate*size(fixedMatrix, 1); % calcolo il primo margine spostandomi a sinistra rispetto alla colonna centrale
+	marginB = matrixHCenter + marginRate*size(fixedMatrix, 1); % calcolo il secondo margine spostandomi a destra rispetto alla colonna centrale
 
-	if (vertice < marginA || vertice > marginB || coefficientValues(1) < 0) % controllo che il vertice sia esterno all'immagine o che la parabola sia concava
+	if (vertice < marginA || vertice > marginB || coefficientValues(1) < 0) % controllo che il vertice sia esterno ai margini o che la parabola sia concava
 		results(i, 1) = 1; % allora essa viene identificata come nonFace
 	else
 		results(i, 1) = 0.5; % altrimenti viene identificata come face
