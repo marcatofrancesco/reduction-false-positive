@@ -32,15 +32,16 @@ E' stato scelto per questo un marginRate di 0,58.
 
 ## Pseudocodice
 ```
-Per ogni elemento di DepthDATA:
+Per ogni elemento con indice i di DepthDATA:
   matrix = DepthDATA{i}{2}; 
   fixedMatrix = FixMatrix(matrix);
-  matrixCenter = round(size(fixedMatrix, 1)/2);
+  matrixVCenter = round(size(fixedMatrix, 1)/2);
   centralrow = fixedMatrix(matrixCenter,:);
   f = parabolic_fit(centralrow);
   coefficientValues = coeffvalues(f);
   vertice = -coefficientValues(2)/(2 * coefficientValues(1)); // -b/2a
   marginRate = 0.58;
+  matrixHCenter = round(size(fixedMatrix, 2)/2);
   marginA = matrixHCenter - marginRate*size(fixedMatrix, 1);
   marginB = matrixHCenter + marginRate*size(fixedMatrix, 1);
   
@@ -68,7 +69,7 @@ D'ora in avanti considereremo:
 Il metodo quindi ha complessità temporale pari a  <img src="https://latex.codecogs.com/svg.latex?\small&space;O(n*m^2)" title="\small O(n*m^2)" />  in quanto per ogni immagine viene calcolato il massimo una volta e poi viene effettuato il controllo degli zeri sulla matrice, valore per valore.
 
 # Risultati e Prestazione del metodo
-<img src="https://latex.codecogs.com/svg.latex?\small&space;Precision&space;=&space;\frac{TruePositive}{TruePositive&plus;FalsePositive}&space;=&space;\frac{389}{389&plus;34}=&space;0,9196&space;\backsimeq&space;92&space;\%" title="\small Precision = \frac{TruePositive}{TruePositive+FalsePositive} = \frac{389}{389+34}= 0,9196 \backsimeq 92 \%" />
+<img src="https://latex.codecogs.com/svg.latex?\small&space;Precision&space;=&space;\frac{TruePositive}{TruePositive&plus;FalsePositive}&space;=&space;\frac{711}{711&plus;49}=&space;0,9355&space;\backsimeq&space;94&space;\%" title="\small Precision = \frac{TruePositive}{TruePositive+FalsePositive} = \frac{711}{711+49}= 0,9355 \backsimeq 94 \%" />
 
 
-<img src="https://latex.codecogs.com/svg.latex?\small&space;Recall&space;=&space;\frac{TruePositive}{TruePositive&plus;FalseNegative}&space;=&space;\frac{389}{389&plus;1025}=&space;0,2751&space;\backsimeq&space;28&space;\%" title="\small Recall = \frac{TruePositive}{TruePositive+FalseNegative} = \frac{389}{389+1025}= 0,2751 \backsimeq 28 \%" />
+<img src="https://latex.codecogs.com/svg.latex?\small&space;Recall&space;=&space;\frac{TruePositive}{TruePositive&plus;FalseNegative}&space;=&space;\frac{711}{711&plus;703}=&space;0,5028&space;\backsimeq&space;50&space;\%" title="\small Recall = \frac{TruePositive}{TruePositive+FalseNegative} = \frac{711}{711+703}= 0,5028 \backsimeq 50 \%" />
