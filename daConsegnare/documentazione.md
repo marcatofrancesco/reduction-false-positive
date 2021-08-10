@@ -20,20 +20,20 @@ Dove matrixHCenter è la posizione della colonna centrale della matrice di profo
 
 Il coefficiente marginRate arbitrario che indica quanto ci si distanzia dal centro della matrice nel considerare i margini.
 
-Nel caso in cui il vertice della parabola ottenuta con regressione parabolica si trovi all'esterno del range definito dai due margini OPPURE se il coefficiente di secondo grado è negativo (parabola concava), allora contrassegno l'immagine come NonFace, altrimenti come NonFace.\
+Nel caso in cui il vertice della parabola ottenuta con regressione parabolica si trovi all'esterno del range definito dai due margini OPPURE se il coefficiente di secondo grado è negativo (parabola concava), allora contrassegno l'immagine come NonFace, altrimenti come Face.\
 \
-Si può infatti notare come un'immagine Face dovrebbe avere valori più bassi (quindi più vicini alla
-camera) verso il centro della matrice (naso, ecc.) come nel seguente fit: 
+Si può notare che un'immagine Face ha tendenzialmente valori più bassi (quindi più vicini alla
+camera) verso il centro della matrice (causati dalla presenta della faccia, del naso, ecc.) come nel seguente fit: 
 
 <img src="https://github.com/marcatofrancesco/reduction-false-positive/raw/main/images/mail1.jpg">
 
-Che invece non è il caso di una NonFace: 
+Cosa che non avviene nel caso di una NonFace: 
 
 <img src="https://github.com/marcatofrancesco/reduction-false-positive/raw/main/images/mail2.jpg">
 
 Si nota inoltre che la parabola di una Face è giocoforza convessa.\
 \
-Il marginRate è stato quindi scelto sulla base del miglior compromesso tra Precision e Recall.
+Il marginRate è stato invece scelto sulla base del miglior compromesso tra Precision e Recall.
 
 <img src="https://github.com/marcatofrancesco/reduction-false-positive/raw/main/images/testingGraph.png">
 
