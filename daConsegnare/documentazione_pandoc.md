@@ -39,11 +39,11 @@ Nel caso in cui il vertice della parabola ottenuta con regressione parabolica si
 Si può notare che un'immagine Face ha tendenzialmente valori più bassi (quindi più vicini alla
 camera) verso il centro della matrice (causati dalla presenta della faccia, del naso, ecc.) come nel seguente esempio di fit: 
 
-![Esempio verificato manualmente con una Face](img/Face.png){height=31%}
+![Esempio verificato manualmente con una Face](img/Face.png){height=30%}
 
 Cosa che non avviene nel caso di una NonFace: 
 
-![Esempio verificato manualmente con una NonFace](img/NonFacce.png){height=31%}
+![Esempio verificato manualmente con una NonFace](img/NonFacce.png){height=30%}
 
 \pagebreak
 
@@ -97,7 +97,7 @@ D'ora in avanti considereremo:
 + n = numero di immagini 
 + m = dimensione totale dell'immagine
 
-Il metodo quindi ha complessità temporale pari a $O(n \cdot m)$ in quanto per ogni immagine viene calcolato il massimo una volta e poi viene effettuato il controllo degli zeri sulla matrice, valore per valore.
+Il metodo quindi ha complessità temporale pari a $O(n \cdot m^2)$ in quanto per ogni immagine viene calcolato il massimo una volta e poi viene effettuato il controllo degli zeri sulla matrice, valore per valore.
 
 # Risultati e Prestazione del metodo
 
