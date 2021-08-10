@@ -1,14 +1,14 @@
-% il seguente metodo popolerà l'array results con i risultati del metodo. ogni indice nell'array corrisponde alla corrispondente immagine in DepthDATA con lo stesso indice. I risultiati sono cos' rappresentati: 1--> non face, 0.5 --> face
+% questo file testa vari valori di marginRate per verificarne la Precision e il Recall
 
-testingPrecision = zeros(40,2);
-testingRecall = zeros(40,2);
+testingPrecision = zeros(40,2); %matrice di Precision
+testingRecall = zeros(40,2); %matrice di Recall
 
 marginRate = 0.3
 
 k = 1;
 
 while marginRate <= 0.7
-    
+    % il seguente metodo popolerà l'array results con i risultati del metodo. ogni indice nell'array corrisponde alla corrispondente immagine in DepthDATA con lo stesso indice. I risultiati sono cos' rappresentati: 1--> non face, 0.5 --> face    
     results = zeros(size(transpose(DepthDATA),1), 1); %inizializzo l'array results vuoto
     
     for i = 1:size(transpose(DepthDATA)) % analizzo tutte le immagini presenti in DepthDATA
