@@ -21,7 +21,7 @@ Il coefficiente marginRate arbitrario che indica quanto ci si distanzia dal cent
 
 Nel caso in cui il vertice della parabola ottenuta con regressione parabolica si trovi all'esterno del range definito dai due margini OPPURE se il coefficiente di secondo grado è negativo, allora contrassegno l'immagine come NonFace, altrimenti come NonFace.
 
-Si può infatti notare come in una immagine Face dovrebbe avere valore più bassi (quindi più vicini alla
+Si può infatti notare come un'immagine Face dovrebbe avere valore più bassi (quindi più vicini alla
 camera) verso il centro della matrice (naso, ecc.) come nel seguente fit: 
 
 <img src="https://github.com/marcatofrancesco/reduction-false-positive/raw/main/images/mail1.jpg">
@@ -29,6 +29,8 @@ camera) verso il centro della matrice (naso, ecc.) come nel seguente fit:
 Che invece non è il caso di una NonFace: 
 
 <img src="https://github.com/marcatofrancesco/reduction-false-positive/raw/main/images/mail2.jpg">
+
+Si nota inoltre che la parabola di una Face giocoforza è convessa.
 
 Il marginRate è stato quindi scelto sulla base del miglior compromesso tra Precision e Recall.
 
