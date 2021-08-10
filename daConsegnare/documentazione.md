@@ -30,7 +30,9 @@ Che invece non è il caso di una NonFace:
 
 <img src="https://github.com/marcatofrancesco/reduction-false-positive/raw/main/images/mail2.jpg">
 
-Si nota inoltre che la parabola di una Face giocoforza è convessa.
+Si nota inoltre che la parabola di una Face è giocoforza convessa.
+
+
 
 Il marginRate è stato quindi scelto sulla base del miglior compromesso tra Precision e Recall.
 
