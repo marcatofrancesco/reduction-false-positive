@@ -89,8 +89,8 @@ Infatti vengono individuate correttamente 711 non Face con soli 49 falsi positiv
 
 # Legenda file
 
--metodo1.m contiene l'effettivo programma che controllando tutte le immagini presenti dentro DepthDATA salva nel vettore results se è faccia (0.5) o non faccia (1)
--checkResults.m a partire dal vettore results, conteggia il numero di NonFace correttamente individuate o erratamente individuate
--fixMatrix.m contiene la funziona fixMatrix che data una matrice di profondità sostituisce i valori 0 con il massimo della profondità
--testValori.m testa i vari valori di marginRate (da 0.3 a 0.7) cancolandone di volta in volta Precision e Recall. Alla fine mostra l'andamento del tutto
--risultatiTestValori.fig mostra il grafico risultante dall'esecuzione del file testValori.m con l'andamento di Precision e Recall.
+-metodo1.m contiene l'effettivo programma che controllando tutte le immagini presenti dentro DepthDATA salva nel vettore results se è faccia (0.5) o non faccia (1)\
+-checkResults.m a partire dal vettore results, conteggia il numero di NonFace correttamente individuate o erratamente individuate\
+-fixMatrix.m contiene la funziona fixMatrix che data una matrice di profondità sostituisce i valori 0 con il massimo della profondità\
+-testValori.m testa i vari valori di marginRate (da 0.3 a 0.7) cancolandone di volta in volta Precision e Recall. Alla fine mostra l'andamento del tutto\
+-risultatiTestValori.fig mostra il grafico risultante dall'esecuzione del file testValori.m con l'andamento di Precision e Recall.\
