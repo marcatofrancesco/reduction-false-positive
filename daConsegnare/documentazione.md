@@ -23,7 +23,7 @@ Il coefficiente marginRate arbitrario che indica quanto ci si distanzia dal cent
 Nel caso in cui il vertice della parabola ottenuta con regressione parabolica si trovi all'esterno del range definito dai due margini OPPURE se il coefficiente di secondo grado è negativo (parabola concava), allora contrassegno l'immagine come NonFace, altrimenti come Face.\
 \
 Si può notare che un'immagine Face ha tendenzialmente valori più bassi (quindi più vicini alla
-camera) verso il centro della matrice (causati dalla presenta della faccia, del naso, ecc.) come nel seguente fit: 
+camera) verso il centro della matrice (causati dalla presenta della faccia, del naso, ecc.) come nel seguente esempio di fit: 
 
 <img src="https://github.com/marcatofrancesco/reduction-false-positive/raw/main/images/mail1.jpg">
 
