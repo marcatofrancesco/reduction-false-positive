@@ -86,3 +86,11 @@ Il metodo ottiene quidi i seguenti risultati in termini di recall e precision:
 
 <img src="https://latex.codecogs.com/svg.latex?\small&space;Recall&space;=&space;\frac{TruePositive}{TruePositive&plus;FalseNegative}&space;=&space;\frac{711}{711&plus;703}=&space;0,5028&space;\backsimeq&space;50&space;\%" title="\small Recall = \frac{TruePositive}{TruePositive+FalseNegative} = \frac{711}{711+703}= 0,5028 \backsimeq 50 \%" />
 Infatti vengono individuate correttamente 711 non Face con soli 49 falsi positivi.
+
+# Legenda file
+
+-metodo1.m contiene l'effettivo programma che controllando tutte le immagini presenti dentro DepthDATA salva nel vettore results se è faccia (0.5) o non faccia (1)
+-checkResults.m a partire dal vettore results, conteggia il numero di NonFace correttamente individuate o erratamente individuate
+-fixMatrix.m contiene la funziona fixMatrix che data una matrice di profondità sostituisce i valori 0 con il massimo della profondità
+-testValori.m testa i vari valori di marginRate (da 0.3 a 0.7) cancolandone di volta in volta Precision e Recall. Alla fine mostra l'andamento del tutto
+-risultatiTestValori.fig mostra il grafico risultante dall'esecuzione del file testValori.m con l'andamento di Precision e Recall.
