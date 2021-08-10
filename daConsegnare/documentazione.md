@@ -81,7 +81,7 @@ D'ora in avanti considereremo:
 Il metodo quindi ha complessità temporale pari a  <img src="https://latex.codecogs.com/svg.latex?\small&space;O(n*m^2)" title="\small O(n*m^2)" />  in quanto per ogni immagine viene calcolato il massimo una volta e poi viene effettuato il controllo degli zeri sulla matrice, valore per valore.
 
 # Risultati e Prestazione del metodo
-Il metodo ottiene quidi i seguenti risultati in termini di recall e precision:
+Il metodo ottiene quindi i seguenti risultati in termini di recall e precision:
 <img src="https://latex.codecogs.com/svg.latex?\small&space;Precision&space;=&space;\frac{TruePositive}{TruePositive&plus;FalsePositive}&space;=&space;\frac{711}{711&plus;49}=&space;0,9355&space;\backsimeq&space;94&space;\%" title="\small Precision = \frac{TruePositive}{TruePositive+FalsePositive} = \frac{711}{711+49}= 0,9355 \backsimeq 94 \%" />
 
 
