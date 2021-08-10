@@ -1,8 +1,8 @@
 # Descrizione Metodo
 ## Descrizione Testuale
-Data la matrice DepthDATA, considero per ogni elemento il campo (indice 2) contenente la matrice di valori di profondità.
+Data la matrice DepthDATA, considero per ogni elemento il campo (di indice 2) contenente la matrice di valori di profondità.
 Richiamo quindi il metodo "FixMatrix" che va a sostituire nella matrice di profondità i valori 0 con il massimo delle profondità presenti nella matrice.
-I valori a 0 di Depth infatti, indicano un "errore" nella determinazione della profondità da parte del sensore; nella maggior parte dei casi l'errore è causato da elementi troppo lontani dal sensore. Per questo vengono posizionati sulla massima profondità, ovvero sullo "sfondo".
+I valori a 0 di Depth infatti, indicano un "errore" nella determinazione della profondità da parte del sensore; nella maggior parte dei casi l'errore è causato da elementi troppo lontani dal sensore. <br/> Per questo vengono posizionati sulla massima profondità, ovvero sullo "sfondo".
 
 Dalla matrice modificata viene poi presa la riga centrale, e si effettua una "regressione parabolica" sui valori della riga centrale.
 Per la regressione parabolica si usa la funzione fit del Curve Fitting Toolbox.
@@ -19,9 +19,9 @@ Dove matrixHCenter è la posizione della colonna centrale della matrice di profo
 
 Il coefficiente marginRate arbitrario che indica quanto ci si distanzia dal centro della matrice nel considerare i margini.
 
-Nel caso in cui il vertice della parabola ottenuta con regressione parabolica si trovi all'esterno del range definito dai due margini OPPURE se il coefficiente di secondo grado è negativo, allora contrassegno l'immagine come NonFace, altrimenti come NonFace.
-
-Si può infatti notare come un'immagine Face dovrebbe avere valore più bassi (quindi più vicini alla
+Nel caso in cui il vertice della parabola ottenuta con regressione parabolica si trovi all'esterno del range definito dai due margini OPPURE se il coefficiente di secondo grado è negativo (parabola concava), allora contrassegno l'immagine come NonFace, altrimenti come NonFace.
+<br/><br/>
+Si può infatti notare come un'immagine Face dovrebbe avere valori più bassi (quindi più vicini alla
 camera) verso il centro della matrice (naso, ecc.) come nel seguente fit: 
 
 <img src="https://github.com/marcatofrancesco/reduction-false-positive/raw/main/images/mail1.jpg">
@@ -31,15 +31,13 @@ Che invece non è il caso di una NonFace:
 <img src="https://github.com/marcatofrancesco/reduction-false-positive/raw/main/images/mail2.jpg">
 
 Si nota inoltre che la parabola di una Face è giocoforza convessa.
-
-
-
+<br/><br/>
 Il marginRate è stato quindi scelto sulla base del miglior compromesso tra Precision e Recall.
 
 <img src="https://github.com/marcatofrancesco/reduction-false-positive/raw/main/images/testingGraph.png">
 
-Come si può vedere nel grafico all'aumentare del marginRate la Precision aumenta a discapito del Recall.
-E' stato scelto per questo un marginRate di 0,58.
+Come si può vedere nel grafico all'aumentare del marginRate la Precision aumenta a discapito del Recall.<br/>
+E' stato scelto per questo come compromesso un marginRate di 0,58.
 
 
 
