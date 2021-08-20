@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.8.20)  20 AUG 2021 17:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.8.20)  20 AUG 2021 18:17
 entering extended mode
 **./documentazione_vanilla.tex
 (documentazione_vanilla.tex
@@ -698,7 +698,7 @@ Overfull \hbox (80.59425pt too wide) in paragraph at lines 209--210
 Here is how much of TeX's memory you used:
  16497 strings out of 478864
  252724 string characters out of 2848660
- 630770 words of memory out of 3000000
+ 631770 words of memory out of 3000000
  34017 multiletter control sequences out of 15000+600000
  464001 words of font info for 119 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -721,7 +721,7 @@ public/lm/lmr8.pfb><C:/Users/novem/AppData/Local/Programs/MiKTeX/fonts/type1/pu
 blic/lm/lmr9.pfb><C:/Users/novem/AppData/Local/Programs/MiKTeX/fonts/type1/publ
 ic/lm/lmri10.pfb><C:/Users/novem/AppData/Local/Programs/MiKTeX/fonts/type1/publ
 ic/lm/lmsy10.pfb>
-Output written on documentazione_vanilla.pdf (4 pages, 478586 bytes).
+Output written on documentazione_vanilla.pdf (4 pages, 484480 bytes).
 PDF statistics:
  172 PDF objects out of 1000 (max. 8388607)
  44 named destinations out of 1000 (max. 500000)

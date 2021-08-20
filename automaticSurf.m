@@ -1,4 +1,4 @@
 function automaticSurf(id)
     load('daConsegnare/DatDepth.mat');
-    surf(FixMatrix(DepthDATA{id}{3}), DepthDATA{id}{16});
+    surf(FixMatrix(DepthDATA{id}{2}), DepthDATA{id}{1});
 end

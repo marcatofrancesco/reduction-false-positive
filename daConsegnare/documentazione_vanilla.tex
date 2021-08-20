@@ -253,17 +253,47 @@ valore.
 \section{Risultati e Prestazione del
 metodo}\label{risultati-e-prestazione-del-metodo}}
 
+Come detto in precedenza, il metodo ha una Precision e Recall che varia al variare del marginRate.
+Con il marginRate scelto, ovvero 0,48 si ottiene:
+
+\(True Positive = 855\) (NonFace individuate)
+
+\(False Positive = 60\) (Face scambiate per NonFace)
+
+\(True Negative = 1314\) (Face individuate)
+
+\(False Negative = 559\) (NonFace scambiate per Face)
+
+\bigskip
 Il metodo ottiene quindi i seguenti risultati in termini di recall e
 precision:
 
-\(Precision = \frac{TruePositive}{TruePositive + FalsePositive} = \frac{711}{711+49} = 0.9355 \approx 94\%\)
+\(Precision = \frac{TruePositive}{TruePositive + FalsePositive} = \frac{855}{855+60} = 0.9344 \approx 93\%\)
 
-\(Recalll = \frac{TruePositive}{TruePositive + FalseNegative} = \frac{711}{711+703} = 0.5028 \approx 50\%\)
-
-Infatti vengono individuate correttamente 711 non Face con soli 49 falsi
-positivi.
+\(Recall = \frac{TruePositive}{TruePositive + FalseNegative} = \frac{855}{855+559} = 0.6046 \approx 60\%\)
 
 \pagebreak
+
+Nel caso si vogliano ridurre al minimo i Falsi Positivi (meno di 10), è possibile farlo combinando solo i metodi 1 (PARABOLIC EXISTENCE) e 2 (VERTEX POSITION).
+Facendo infatti così e usando come marginRate 1,69 si ottiene:
+
+\(True Positive = 375\) (NonFace individuate)
+
+\(False Positive = 9\) (Face scambiate per NonFace)
+
+\(True Negative = 1365\) (Face individuate)
+
+\(False Negative = 1039\) (NonFace scambiate per Face)
+
+Ottenendo:
+
+\(Precision = \frac{TruePositive}{TruePositive + FalsePositive} = \frac{375}{375+9} = 0.9765 \approx 98\%\)
+
+\(Recall = \frac{TruePositive}{TruePositive + FalseNegative} = \frac{375}{375+1039} = 0.2652 \approx 27\%\)
+
+Purtroppo in questo caso a discapito della Precision abbiamo un Recall basso.
+
+
 
 \hypertarget{legenda-file}{%
 \section{Legenda file}\label{legenda-file}}
