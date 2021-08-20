@@ -105,33 +105,36 @@ Martini 1189321}
 \subsection{Descrizione Testuale}\label{descrizione-testuale}}
 
 Data la matrice DepthDATA, considero per ogni elemento il campo (di
-indice 2) contenente la matrice di valori di profondità. Richiamo quindi
-il metodo ``FixMatrix'' che va a sostituire nella matrice di profondità
-i valori 0 con il massimo delle profondità presenti nella matrice. I
-valori a 0 di Depth infatti, indicano un ``errore'' nella determinazione
-della profondità da parte del sensore; nella maggior parte dei casi
-l'errore è causato da elementi troppo lontani dal sensore.\\
-Per questo vengono posizionati sulla massima profondità, ovvero sullo
-``sfondo''.
+indice 2) contenente la matrice di valori di profondità.
 
-Dalla matrice modificata viene poi presa la riga centrale, e si effettua
-una ``regressione parabolica'' sui valori della riga centrale. Per la
+Dalla matrice viene poi presa la riga centrale dalla quale vengono tolti i valori a 0 (che indicano un errore del sensore) e su cui vi si effettua
+una ``regressione parabolica''. Per la
 regressione parabolica si usa la funzione fit del Curve Fitting Toolbox.
 
 Con i coefficienti del curve fit vengono applicate insieme 3 tecniche diverse:
 
 \begin{enumerate}
 
-\item Controllo che il risultato del fit sia una parabola. Nel caso in cui non sia una parabola infatti, il calcolo del vertice (-b/2a) restituisce NaN, in quanto il coefficiente di 2° grado è 0 e si ha una divisione per 0.
+\item
+\textbf{PARABOLIC EXISTENCE}
+\newline
+Controllo che il risultato del fit sia una parabola. Nel caso in cui non sia una parabola infatti, il calcolo del vertice (-b/2a) restituisce NaN, in quanto il coefficiente di 2° grado è 0 e si ha una divisione per 0.
 Se non è una parabola contrassegno direttamente l'elemento come \emph{NonFace}.
 Questa tecnica a sé ha una Precision del 100\%.
 
-\item Nel caso in cui sia una parabola, controllo che questa sia concava.
+\item
+\textbf{CONCAVITY CHECK}
+\newline
+Nel caso in cui sia una parabola, controllo che questa sia concava.
 Nel caso di parabola concava ho il coefficiente a > 0.
 Quindi se il coefficiente a è minore o uguale a 0 contrassegno l'elemento come \emph{NonFace}.
-Precisione circa del 94\%.
+\newline
+Precision circa del 94,6\%.
 
-\item Se i primi due controlli vengono superati, avendo quindi una parabola concava, controllo che il vertice di questa sia all'interno di un range specifico:
+\item
+\textbf{VERTEX POSITION}
+\newline
+Se i primi due controlli vengono superati, avendo quindi una parabola concava, controllo che il vertice di questa sia all'interno di un range specifico:
 
 \(A = matrixHCenter - marginRate \cdot matrixWidth\)
 
@@ -147,7 +150,10 @@ Nel caso in cui il vertice della parabola ottenuta con regressione
 parabolica si trovi all'esterno del range definito dai due margini allora contrassegno l'immagine come \emph{NonFace}, altrimenti
 come \emph{Face}.
 
+La Precision in questo caso varia al variare di \emph{marginRate}
 \end{enumerate}
+
+Combinando tutti e 3 i metodi si ha come upperbound della Precision quello del CONCAVITY CHECK, ovvero di circa il 94,6\%.
 
 \pagebreak
 
@@ -171,35 +177,36 @@ tra Precision e Recall.
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth,height=0.31\textheight]{img/testingGraph.png}
-\caption{Messa a confronto di Precision e Recall variando marginRate}
+\subfloat[\centering Precision e Recall con marginRate tra 0 e 2]{{\includegraphics[width=7cm]{img/testingGraph_0_2.png} }}%
+\qquad
+\subfloat[\centering Precision e Recall con marginRate tra 0.4 e 0.8]{{\includegraphics[width=7cm]{img/testingGraph_0_4_0_8.png} }}%
 \end{figure}
 
 Come si può vedere nel grafico all'aumentare del marginRate la Precision
 aumenta a discapito del Recall.
 
-E' stato scelto per questo come compromesso un marginRate di 0,58.
+E' stato scelto per questo come compromesso un marginRate di 0,48 che permette un Recall del 60,4\% ed una Precision di 93,4\%.
 
 \pagebreak 
 
 \hypertarget{pseudocodice}{%
 \subsection{Pseudocodice}\label{pseudocodice}}
 
-\begin{lstlisting}
+\begin{lstlisting}[basicstyle=\small]
+marginRate = 0.48;
 Per ogni elemento con indice i di DepthDATA:
   matrix = DepthDATA{i}{2}; 
-  fixedMatrix = FixMatrix(matrix);
-  matrixVCenter = round(size(fixedMatrix, 1)/2);
+  matrixVCenter = round(size(matrix, 1)/2);
   centralrow = fixedMatrix(matrixVCenter,:);
+  clearZeros(centralrow); //rimozione degli zeri
   f = parabolic_fit(centralrow);
-  coefficientValues = coeffvalues(f);
+  coefficientValues = round(coeffvalues(f), 15);
   vertice = -coefficientValues(2)/(2 * coefficientValues(1)); // -b/2a
-  marginRate = 0.58;
-  matrixHCenter = round(size(fixedMatrix, 2)/2);
-  marginA = matrixHCenter - marginRate*size(fixedMatrix, 1);
-  marginB = matrixHCenter + marginRate*size(fixedMatrix, 1);
+  matrixHCenter = round(size(matrix, 2)/2);
+  marginA = matrixHCenter - marginRate*size(matrix, 2);
+  marginB = matrixHCenter + marginRate*size(matrix, 2);
   
-  if(vertice < marginA or vertice > marginB or coefficientValues(1) < 0):
+  if(vertice == NaN or vertice < marginA or vertice > marginB or coefficientValues(1) <= 0):
       //contrassegno come NonFace
   else:
       //contrassegno come Face
@@ -221,8 +228,6 @@ complessità temporale delle seguenti funzioni utilizzate:
   transpose \(= O(1)\)
 \item
   fit \(= O(1)\)
-\item
-  max \(= O(n)\)
 \end{itemize}
 
 Per ognuna delle precedenti funzioni sono stati calcolati i vari tempi

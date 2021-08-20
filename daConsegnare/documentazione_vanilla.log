@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.8.20)  20 AUG 2021 11:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.8.20)  20 AUG 2021 17:29
 entering extended mode
 **./documentazione_vanilla.tex
 (documentazione_vanilla.tex
@@ -654,56 +654,62 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
-25.
+21.
 
 (C:\Users\novem\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 136.
+(Font)              <10> on input line 139.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 136.
+(Font)              <7> on input line 139.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 136.
+(Font)              <5> on input line 139.
  [1
 
 {C:/Users/novem/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
-<img/Face.png, id=24, 519.44063pt x 395.97937pt>
+<img/Face.png, id=25, 519.44063pt x 395.97937pt>
 File: img/Face.png Graphic file (type png)
 <use img/Face.png>
-Package pdftex.def Info: img/Face.png  used on input line 160.
+Package pdftex.def Info: img/Face.png  used on input line 166.
 (pdftex.def)             Requested size: 199.16492pt x 151.82716pt.
-<img/NonFacce.png, id=25, 523.20468pt x 399.74344pt>
+<img/NonFacce.png, id=26, 523.20468pt x 399.74344pt>
 File: img/NonFacce.png Graphic file (type png)
 <use img/NonFacce.png>
-Package pdftex.def Info: img/NonFacce.png  used on input line 162.
+Package pdftex.def Info: img/NonFacce.png  used on input line 168.
 (pdftex.def)             Requested size: 199.16313pt x 152.16635pt.
-<img/testingGraph.png, id=26, 411.33675pt x 358.941pt>
-File: img/testingGraph.png Graphic file (type png)
-<use img/testingGraph.png>
-Package pdftex.def Info: img/testingGraph.png  used on input line 174.
-(pdftex.def)             Requested size: 255.42155pt x 222.88615pt.
+<img/testingGraph_0_2.png, id=27, 578.76225pt x 511.9125pt>
+File: img/testingGraph_0_2.png Graphic file (type png)
+<use img/testingGraph_0_2.png>
+Package pdftex.def Info: img/testingGraph_0_2.png  used on input line 180.
+(pdftex.def)             Requested size: 199.16982pt x 176.16476pt.
+<img/testingGraph_0_4_0_8.png, id=29, 500.46976pt x 422.17725pt>
+File: img/testingGraph_0_4_0_8.png Graphic file (type png)
+<use img/testingGraph_0_4_0_8.png>
+Package pdftex.def Info: img/testingGraph_0_4_0_8.png  used on input line 182.
+(pdftex.def)             Requested size: 199.16869pt x 168.01112pt.
  [2 <./img/Face.png (PNG copy)> <./img/NonFacce.png (PNG copy)> <./img/testingG
-raph.png>]
-Overfull \hbox (7.99983pt too wide) in paragraph at lines 202--203
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+raph_0_2.png> <./img/testingGraph_0_4_0_8.png>]
+Overfull \hbox (80.59425pt too wide) in paragraph at lines 209--210
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 [3] [4] (documentazione_vanilla.aux) ) 
 Here is how much of TeX's memory you used:
- 16467 strings out of 478864
- 252184 string characters out of 2848660
- 629770 words of memory out of 3000000
- 34005 multiletter control sequences out of 15000+600000
- 457131 words of font info for 110 fonts, out of 8000000 for 9000
+ 16497 strings out of 478864
+ 252724 string characters out of 2848660
+ 630770 words of memory out of 3000000
+ 34017 multiletter control sequences out of 15000+600000
+ 464001 words of font info for 119 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 74i,10n,80p,529b,1020s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 74i,10n,80p,529b,1093s stack positions out of 5000i,500n,10000p,200000b,80000s
 {C:/Users/novem/AppData/Local/Programs/Mi
 KTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/novem/AppData/Local/Programs/Mi
 KTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/novem/AppData/Local/Programs/MiKTeX
-/fonts/enc/dvips/lm/lm-ec.enc}{C:/Users/novem/AppData/Local/Programs/MiKTeX/fon
-ts/enc/dvips/lm/lm-mathsy.enc}{C:/Users/novem/AppData/Local/Programs/MiKTeX/fon
-ts/enc/dvips/lm/lm-ts1.enc}<C:/Users/novem/AppData/Local/Programs/MiKTeX/fonts/
+/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Users/novem/AppData/Local/Programs/MiKTeX/fo
+nts/enc/dvips/lm/lm-ec.enc}{C:/Users/novem/AppData/Local/Programs/MiKTeX/fonts/
+enc/dvips/lm/lm-mathsy.enc}<C:/Users/novem/AppData/Local/Programs/MiKTeX/fonts/
+type1/public/lm/lmbx10.pfb><C:/Users/novem/AppData/Local/Programs/MiKTeX/fonts/
 type1/public/lm/lmbx12.pfb><C:/Users/novem/AppData/Local/Programs/MiKTeX/fonts/
 type1/public/lm/lmmi10.pfb><C:/Users/novem/AppData/Local/Programs/MiKTeX/fonts/
 type1/public/lm/lmmi7.pfb><C:/Users/novem/AppData/Local/Programs/MiKTeX/fonts/t
@@ -712,11 +718,12 @@ pe1/public/lm/lmr12.pfb><C:/Users/novem/AppData/Local/Programs/MiKTeX/fonts/typ
 e1/public/lm/lmr17.pfb><C:/Users/novem/AppData/Local/Programs/MiKTeX/fonts/type
 1/public/lm/lmr7.pfb><C:/Users/novem/AppData/Local/Programs/MiKTeX/fonts/type1/
 public/lm/lmr8.pfb><C:/Users/novem/AppData/Local/Programs/MiKTeX/fonts/type1/pu
-blic/lm/lmri10.pfb><C:/Users/novem/AppData/Local/Programs/MiKTeX/fonts/type1/pu
-blic/lm/lmsy10.pfb>
-Output written on documentazione_vanilla.pdf (4 pages, 389012 bytes).
+blic/lm/lmr9.pfb><C:/Users/novem/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/lm/lmri10.pfb><C:/Users/novem/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/lm/lmsy10.pfb>
+Output written on documentazione_vanilla.pdf (4 pages, 478586 bytes).
 PDF statistics:
- 154 PDF objects out of 1000 (max. 8388607)
- 42 named destinations out of 1000 (max. 500000)
- 30784 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 172 PDF objects out of 1000 (max. 8388607)
+ 44 named destinations out of 1000 (max. 500000)
+ 36933 words of extra memory for PDF output out of 42996 (max. 10000000)
 
