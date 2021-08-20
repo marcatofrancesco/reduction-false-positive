@@ -118,10 +118,20 @@ Dalla matrice modificata viene poi presa la riga centrale, e si effettua
 una ``regressione parabolica'' sui valori della riga centrale. Per la
 regressione parabolica si usa la funzione fit del Curve Fitting Toolbox.
 
-I coefficienti vengono poi usati per calcolare la posizione in ascissa
-del vertice.
+Con i coefficienti del curve fit vengono applicate insieme 3 tecniche diverse:
 
-Definisco due margini calcolati come segue:
+\begin{enumerate}
+
+\item Controllo che il risultato del fit sia una parabola. Nel caso in cui non sia una parabola infatti, il calcolo del vertice (-b/2a) restituisce NaN, in quanto il coefficiente di 2° grado è 0 e si ha una divisione per 0.
+Se non è una parabola contrassegno direttamente l'elemento come \emph{NonFace}.
+Questa tecnica a sé ha una Precision del 100\%.
+
+\item Nel caso in cui sia una parabola, controllo che questa sia concava.
+Nel caso di parabola concava ho il coefficiente a > 0.
+Quindi se il coefficiente a è minore o uguale a 0 contrassegno l'elemento come \emph{NonFace}.
+Precisione circa del 94\%.
+
+\item Se i primi due controlli vengono superati, avendo quindi una parabola concava, controllo che il vertice di questa sia all'interno di un range specifico:
 
 \(A = matrixHCenter - marginRate \cdot matrixWidth\)
 
@@ -130,14 +140,14 @@ Definisco due margini calcolati come segue:
 Dove \(matrixHCenter\) è la posizione della colonna centrale della
 matrice di profondità e \(matrixWidth\) è la larghezza della matrice.
 
-Il coefficiente marginRate arbitrario che indica quanto ci si distanzia
+Il coefficiente marginRate arbitrario indica quanto ci si distanzia
 dal centro della matrice nel considerare i margini.
 
 Nel caso in cui il vertice della parabola ottenuta con regressione
-parabolica si trovi all'esterno del range definito dai due margini
-OPPURE se il coefficiente di secondo grado è negativo (parabola
-concava), allora contrassegno l'immagine come \emph{NonFace}, altrimenti
+parabolica si trovi all'esterno del range definito dai due margini allora contrassegno l'immagine come \emph{NonFace}, altrimenti
 come \emph{Face}.
+
+\end{enumerate}
 
 \pagebreak
 
