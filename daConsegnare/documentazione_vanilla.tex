@@ -197,16 +197,18 @@ marginRate = 0.48;
 Per ogni elemento con indice i di DepthDATA:
   matrix = DepthDATA{i}{2}; 
   matrixVCenter = round(size(matrix, 1)/2);
-  centralrow = fixedMatrix(matrixVCenter,:);
-  clearZeros(centralrow); //rimozione degli zeri
-  f = parabolic_fit(centralrow);
+  centralrow = matrix(matrixVCenter,:);
+  x = 1:size(centralrow,2); //creazione indici
+  y = transpose(centralrow);
+  clearZeros(x, y); //rimozione degli zeri da y e relativo indice x
+  f = parabolic_fit(x, y);
   coefficientValues = round(coeffvalues(f), 15);
   vertice = -coefficientValues(2)/(2 * coefficientValues(1)); // -b/2a
   matrixHCenter = round(size(matrix, 2)/2);
   marginA = matrixHCenter - marginRate*size(matrix, 2);
   marginB = matrixHCenter + marginRate*size(matrix, 2);
   
-  if(vertice == NaN or vertice < marginA or vertice > marginB or coefficientValues(1) <= 0):
+  if(vertice == 0 or vertice < marginA or vertice > marginB or coefficientValues(1) <= 0):
       //contrassegno come NonFace
   else:
       //contrassegno come Face
