@@ -111,7 +111,7 @@ Dalla matrice viene poi presa la riga centrale dalla quale vengono tolti i valor
 una ``regressione parabolica''. Per la
 regressione parabolica si usa la funzione fit del Curve Fitting Toolbox.
 
-Con i coefficienti del curve fit vengono applicate insieme 3 tecniche diverse:
+Sui coefficienti del curve fit vengono applicate 3 tecniche diverse:
 
 \begin{enumerate}
 
@@ -153,11 +153,14 @@ come \emph{Face}.
 La Precision in questo caso varia al variare di \emph{marginRate}
 \end{enumerate}
 
-Combinando tutti e 3 i metodi si ha come upperbound della Precision quello del CONCAVITY CHECK, ovvero di circa il 94,6\%.
+I 3 metodi vengono combinati attraverso l'operatore logico OR.\\
+Nel caso almeno uno dei 3 metodi identifichi l'elemento come NonFace, contrassegno il pattern come NonFace altrimenti contrassegno come Face.\\
+\\
+Combinando i metodi in questo modo, si ha come upperbound della Precision quello del CONCAVITY CHECK, ovvero circa il 94,6\%.
 
 \pagebreak
 
-Si può notare che un'immagine Face ha tendenzialmente valori più bassi
+Si può notare infatti che un'immagine Face ha tendenzialmente valori più bassi
 (quindi più vicini alla camera) verso il centro della matrice (causati
 dalla presenta della faccia, del naso, ecc.), cosa che non avviene nel caso di una NonFace:
 
@@ -169,11 +172,10 @@ dalla presenta della faccia, del naso, ecc.), cosa che non avviene nel caso di u
 \caption{Confronto di Face e NonFace}
 \end{figure}
 
+Si nota inoltre che la parabola di una Face è per forza di cose convessa.
+\newline
 
-Si nota inoltre che la parabola di una Face è giocoforza convessa.
-
-Il marginRate è stato invece scelto sulla base del miglior compromesso
-tra Precision e Recall.
+Il marginRate è stato invece scelto sulla base del miglior compromesso tra Precision e Recall.
 
 \begin{figure}
 \centering
@@ -293,7 +295,7 @@ Ottenendo:
 
 \(Recall = \frac{TruePositive}{TruePositive + FalseNegative} = \frac{375}{375+1039} = 0.2652 \approx 27\%\)
 
-Purtroppo in questo caso a discapito della Precision abbiamo un Recall basso.
+Purtroppo in questo caso la Precision alta è a discapito del Recall.
 
 
 
