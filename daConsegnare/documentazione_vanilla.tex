@@ -182,6 +182,7 @@ Il marginRate è stato invece scelto sulla base del miglior compromesso tra Prec
 \subfloat[\centering Precision e Recall con marginRate tra 0 e 2]{{\includegraphics[width=7cm]{img/testingGraph_0_2.png} }}%
 \qquad
 \subfloat[\centering Precision e Recall con marginRate tra 0.4 e 0.8]{{\includegraphics[width=7cm]{img/testingGraph_0_4_0_8.png} }}%
+\caption{Scelta marginRate}
 \end{figure}
 
 Come si può vedere nel grafico all'aumentare del marginRate la Precision
@@ -248,10 +249,8 @@ D'ora in avanti considereremo:
   m = dimensione totale dell'immagine
 \end{itemize}
 
-Il metodo quindi ha complessità temporale pari a \(O(n \cdot m^2)\) in
-quanto per ogni immagine viene calcolato il massimo una volta e poi
-viene effettuato il controllo degli zeri sulla matrice, valore per
-valore.
+Il metodo quindi ha complessità temporale pari a \(O(n)\) in
+quanto viene effettuato il fit solo sulla riga centrale e non vengono analizzati tutti gli elementi della matrice.
 
 \hypertarget{risultati-e-prestazione-del-metodo}{%
 \section{Risultati e Prestazione del
@@ -297,7 +296,60 @@ Ottenendo:
 
 Purtroppo in questo caso la Precision alta è a discapito del Recall.
 
+\hypertarget{Analisi degli errori}{%
+\subsection{Analisi degli errori}\label{Analisi degli errori}}
 
+Di seguito vengono mostrate due immagini contrassegnate come FalsePositive(Face individuate come NonFace).
+
+\begin{figure}
+\centering
+\subfloat[\centering immagine a colori senza cornice aggiuntiva]{{\includegraphics[width=4cm]{img/229-1.png} }}%
+\qquad
+\subfloat[\centering immagine a colori dell'area relativa alla depth map con "cornice aggiuntiva"]{{\includegraphics[width=4cm]{img/229-2.png} }}%
+\qquad
+\subfloat[\centering Regressione parabolica sulla riga centrale una volta tolti i valori a 0]{{\includegraphics[width=4cm]{img/229-3.png} }}%
+\caption{Immagine 229}
+\end{figure}
+Nella figura 3 si può notare che il metodo non funziona correttamente quanto non è presente tutto il viso nell'immagine senza cornice.
+In questo caso infatti il vertice della regressione parabolica si trova a circa -15.
+
+\begin{figure}
+\centering
+\subfloat[\centering immagine a colori senza cornice aggiuntiva]{{\includegraphics[width=4cm]{img/458-1.png} }}%
+\qquad
+\subfloat[\centering immagine a colori dell'area relativa alla depth map con "cornice aggiuntiva"]{{\includegraphics[width=4cm]{img/458-2.png} }}%
+\qquad
+\subfloat[\centering Regressione parabolica sulla riga centrale una volta tolti i valori a 0]{{\includegraphics[width=4cm]{img/458-3.png} }}%
+\caption{Immagine 458}
+\end{figure}
+Nella figura 4 si può notare che il metodo non funziona correttamente quanto è presente un oggetto che copre parzialmente il volto.
+In questo caso infatti la regressione parabolica non soddisfa il concavity check.
+
+\pagebreak
+
+Ora invece verranno analizzate due immagini contrassegnate come FalseNegative (NonFace individuate come Face).
+
+\begin{figure}
+\centering
+\subfloat[\centering immagine a colori senza cornice aggiuntiva]{{\includegraphics[width=4cm]{img/75-1.png} }}%
+\qquad
+\subfloat[\centering immagine a colori dell'area relativa alla depth map con "cornice aggiuntiva"]{{\includegraphics[width=4cm]{img/75-2.png} }}%
+\qquad
+\subfloat[\centering Regressione parabolica sulla riga centrale una volta tolti i valori a 0]{{\includegraphics[width=4cm]{img/75-3.png} }}%
+\caption{Immagine 75}
+\end{figure}
+La figura 5 mostra un caso in cui un oggetto di dimensione medio/piccola è posizionato al centro dell'immagine, questo infatti fa in modo che il metodo lo riconosca come Face perchè la sua regressione parabolica è pressochè indistenguibile da quella di una vera Face.
+
+\begin{figure}
+\centering
+\subfloat[\centering immagine a colori senza cornice aggiuntiva]{{\includegraphics[width=4cm]{img/1345-1.png} }}%
+\qquad
+\subfloat[\centering immagine a colori dell'area relativa alla depth map con "cornice aggiuntiva"]{{\includegraphics[width=4cm]{img/1345-2.png} }}%
+\qquad
+\subfloat[\centering Regressione parabolica sulla riga centrale una volta tolti i valori a 0]{{\includegraphics[width=4cm]{img/1345-3.png} }}%
+\caption{Immagine 1345}
+\end{figure}
+La figura 6 mostra un caso in cui l'immagine a colori senza cornice aggiuntiva prende un'area con un oggetto chiaramente in primo piano, questo fa in modo che venga individuata come Face visto la sua regressione parabolica.
 
 \hypertarget{legenda-file}{%
 \section{Legenda file}\label{legenda-file}}
