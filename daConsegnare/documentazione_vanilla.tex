@@ -229,6 +229,16 @@ Per ogni elemento con indice i di DepthDATA:
 \section{Analisi Complessità
 Temporale}\label{analisi-complessituxe0-temporale}}
 
+Consideriamo:
+
+\begin{itemize}
+\tightlist
+\item
+  n = numero di immagini
+\item
+  m = dimensione totale dell'immagine
+\end{itemize}
+
 Per analizzare la complessità del metodo si tiene conto della
 complessità temporale delle seguenti funzioni utilizzate:
 
@@ -247,16 +257,6 @@ complessità temporale delle seguenti funzioni utilizzate:
 Per ognuna delle precedenti funzioni sono stati calcolati i vari tempi
 di esecuzione al variare della quantità di dati utilizzati, i risultati
 hanno portato alle precedenti conclusioni.
-
-D'ora in avanti considereremo:
-
-\begin{itemize}
-\tightlist
-\item
-  n = numero di immagini
-\item
-  m = dimensione totale dell'immagine
-\end{itemize}
 
 Il metodo quindi ha complessità temporale pari a \(O(n \cdot \sqrt[2]{m})\) in
 quanto viene effettuato il fit solo sulla riga centrale e non vengono analizzati tutti gli elementi della matrice.
