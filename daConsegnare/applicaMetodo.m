@@ -16,6 +16,7 @@ function results = applicaMetodo(marginRate, sourceMatrix, concavityCheck)
         x = transpose(1:size(centralrow, 2));
         y = double(transpose(centralrow));
 
+        % clearZeros - Rimozione zeri dalla riga centrale e relativo indice
         p = 1;
         while p <= size(y, 1) && size(y, 2) > 0
             %if isnan(y(p))
