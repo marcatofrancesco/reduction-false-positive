@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.8.20)  23 AUG 2021 16:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.8.20)  23 AUG 2021 17:35
 entering extended mode
 **./documentazione_vanilla.tex
 (documentazione_vanilla.tex
@@ -706,32 +706,32 @@ Overfull \hbox (14.61104pt too wide) in paragraph at lines 221--222
 <img/229-1.png, id=82, 344.0052pt x 274.1442pt>
 File: img/229-1.png Graphic file (type png)
 <use img/229-1.png>
-Package pdftex.def Info: img/229-1.png  used on input line 317.
+Package pdftex.def Info: img/229-1.png  used on input line 315.
 (pdftex.def)             Requested size: 113.81076pt x 90.69792pt.
 <img/229-2.png, id=83, 348.3414pt x 274.1442pt>
 File: img/229-2.png Graphic file (type png)
 <use img/229-2.png>
-Package pdftex.def Info: img/229-2.png  used on input line 319.
+Package pdftex.def Info: img/229-2.png  used on input line 317.
 (pdftex.def)             Requested size: 113.81023pt x 89.56848pt.
 <img/229-3.png, id=84, 369.5406pt x 292.4526pt>
 File: img/229-3.png Graphic file (type png)
 <use img/229-3.png>
-Package pdftex.def Info: img/229-3.png  used on input line 321.
+Package pdftex.def Info: img/229-3.png  used on input line 319.
 (pdftex.def)             Requested size: 113.80644pt x 90.06586pt.
 <img/458-1.png, id=85, 348.3414pt x 274.1442pt>
 File: img/458-1.png Graphic file (type png)
 <use img/458-1.png>
-Package pdftex.def Info: img/458-1.png  used on input line 329.
+Package pdftex.def Info: img/458-1.png  used on input line 327.
 (pdftex.def)             Requested size: 113.81023pt x 89.56848pt.
 <img/458-2.png, id=86, 349.305pt x 274.1442pt>
 File: img/458-2.png Graphic file (type png)
 <use img/458-2.png>
-Package pdftex.def Info: img/458-2.png  used on input line 331.
+Package pdftex.def Info: img/458-2.png  used on input line 329.
 (pdftex.def)             Requested size: 113.8106pt x 89.32169pt.
 <img/458-3.png, id=87, 366.6498pt x 292.4526pt>
 File: img/458-3.png Graphic file (type png)
 <use img/458-3.png>
-Package pdftex.def Info: img/458-3.png  used on input line 333.
+Package pdftex.def Info: img/458-3.png  used on input line 331.
 (pdftex.def)             Requested size: 113.80571pt x 90.77539pt.
  [4 <./img/229-1.png (PNG copy)> <./img/229-2.png (PNG copy)> <./img/229-3.png 
 (PNG copy)> <./img/458-1.png (PNG copy)> <./img/458-2.png (PNG copy)> <./img/45
@@ -739,32 +739,32 @@ Package pdftex.def Info: img/458-3.png  used on input line 333.
 <img/75-1.png, id=102, 344.487pt x 274.1442pt>
 File: img/75-1.png Graphic file (type png)
 <use img/75-1.png>
-Package pdftex.def Info: img/75-1.png  used on input line 345.
+Package pdftex.def Info: img/75-1.png  used on input line 343.
 (pdftex.def)             Requested size: 113.8072pt x 90.56825pt.
 <img/75-2.png, id=103, 348.3414pt x 274.1442pt>
 File: img/75-2.png Graphic file (type png)
 <use img/75-2.png>
-Package pdftex.def Info: img/75-2.png  used on input line 347.
+Package pdftex.def Info: img/75-2.png  used on input line 345.
 (pdftex.def)             Requested size: 113.81023pt x 89.56848pt.
 <img/75-3.png, id=104, 369.5406pt x 292.4526pt>
 File: img/75-3.png Graphic file (type png)
 <use img/75-3.png>
-Package pdftex.def Info: img/75-3.png  used on input line 349.
+Package pdftex.def Info: img/75-3.png  used on input line 347.
 (pdftex.def)             Requested size: 113.80644pt x 90.06586pt.
 <img/1345-1.png, id=105, 348.3414pt x 274.1442pt>
 File: img/1345-1.png Graphic file (type png)
 <use img/1345-1.png>
-Package pdftex.def Info: img/1345-1.png  used on input line 356.
+Package pdftex.def Info: img/1345-1.png  used on input line 354.
 (pdftex.def)             Requested size: 113.81023pt x 89.56848pt.
 <img/1345-2.png, id=106, 349.305pt x 274.1442pt>
 File: img/1345-2.png Graphic file (type png)
 <use img/1345-2.png>
-Package pdftex.def Info: img/1345-2.png  used on input line 358.
+Package pdftex.def Info: img/1345-2.png  used on input line 356.
 (pdftex.def)             Requested size: 113.8106pt x 89.32169pt.
 <img/1345-3.png, id=107, 366.6498pt x 292.4526pt>
 File: img/1345-3.png Graphic file (type png)
 <use img/1345-3.png>
-Package pdftex.def Info: img/1345-3.png  used on input line 360.
+Package pdftex.def Info: img/1345-3.png  used on input line 358.
 (pdftex.def)             Requested size: 113.80571pt x 90.77539pt.
  [5 <./img/75-1.png (PNG copy)> <./img/75-2.png (PNG copy)> <./img/75-3.png (PN
 G copy)> <./img/1345-1.png (PNG copy)> <./img/1345-2.png (PNG copy)> <./img/134
@@ -798,7 +798,7 @@ s/type1/public/lm/lmr9.pfb><C:/Users/novem/AppData/Local/Programs/MiKTeX/fonts/
 type1/public/lm/lmri10.pfb><C:/Users/novem/AppData/Local/Programs/MiKTeX/fonts/
 type1/public/lm/lmsy10.pfb><C:/Users/novem/AppData/Local/Programs/MiKTeX/fonts/
 type1/public/lm/lmsy9.pfb>
-Output written on documentazione_vanilla.pdf (5 pages, 1372194 bytes).
+Output written on documentazione_vanilla.pdf (5 pages, 1371872 bytes).
 PDF statistics:
  235 PDF objects out of 1000 (max. 8388607)
  67 named destinations out of 1000 (max. 500000)
