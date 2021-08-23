@@ -218,7 +218,7 @@ Per ogni elemento con indice i di DepthDATA:
   marginA = matrixHCenter - marginRate*size(matrix, 2);
   marginB = matrixHCenter + marginRate*size(matrix, 2);
   
-  if(vertice == 0 or vertice $\notin$ [marginA, marginB] or coefficientValues(1) <= 0):
+  if(isnan(vertice) OR coefficientValues(1) <= 0 OR vertice $\notin$ [marginA, marginB]):
       //contrassegno come NonFace
   else:
       //contrassegno come Face
