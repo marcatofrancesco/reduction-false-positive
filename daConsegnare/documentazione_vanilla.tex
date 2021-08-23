@@ -118,7 +118,7 @@ Sui coefficienti del curve fit vengono applicate 3 tecniche diverse:
 \item
 \textbf{PARABOLIC EXISTENCE}
 \newline
-Controllo che il risultato del fit sia una parabola. Nel caso in cui non sia una parabola infatti, il calcolo del vertice (-b/2a) restituisce NaN, in quanto il coefficiente di 2° grado è 0 e si ha una divisione per 0.
+Controllo che il risultato del fit sia una parabola. Nel caso in cui non sia una parabola infatti, il calcolo del vertice \emph{(-b/2a)} restituisce \emph{NaN}, in quanto il coefficiente di 2° grado è 0 e si ha una divisione per 0.
 Se non è una parabola contrassegno direttamente l'elemento come \emph{NonFace}.
 Questa tecnica a sé ha una Precision del 100\%.
 
@@ -126,8 +126,8 @@ Questa tecnica a sé ha una Precision del 100\%.
 \textbf{CONCAVITY CHECK}
 \newline
 Nel caso in cui sia una parabola, controllo che questa sia concava.
-Nel caso di parabola concava ho il coefficiente a > 0.
-Quindi se il coefficiente a è minore o uguale a 0 contrassegno l'elemento come \emph{NonFace}.
+Nel caso di parabola concava ho il coefficiente \emph{a} > 0.
+Quindi se il coefficiente \emph{a} è minore o uguale a 0 contrassegno l'elemento come \emph{NonFace}.
 \newline
 Precision circa del 94,6\%.
 
@@ -143,7 +143,7 @@ Se i primi due controlli vengono superati, avendo quindi una parabola concava, c
 Dove \(matrixHCenter\) è la posizione della colonna centrale della
 matrice di profondità e \(matrixWidth\) è la larghezza della matrice.
 
-Il coefficiente marginRate arbitrario indica quanto ci si distanzia
+Il coefficiente \emph{marginRate} arbitrario indica quanto ci si distanzia
 dal centro della matrice nel considerare i margini.
 
 Nel caso in cui il vertice della parabola ottenuta con regressione
@@ -153,16 +153,19 @@ come \emph{Face}.
 La Precision in questo caso varia al variare di \emph{marginRate}
 \end{enumerate}
 
-I 3 metodi vengono combinati attraverso l'operatore logico OR.\\
-Nel caso almeno uno dei 3 metodi identifichi l'elemento come NonFace, contrassegno il pattern come NonFace altrimenti contrassegno come Face.\\
+I 3 metodi vengono combinati attraverso l'operatore logico \emph{OR}.\\
+Nel caso almeno uno dei 3 metodi identifichi l'elemento come NonFace contrassegno il pattern come \emph{NonFace} altrimenti contrassegno come \emph{Face}.\\
 \\
 Combinando i metodi in questo modo, si ha come upperbound della Precision quello del CONCAVITY CHECK, ovvero circa il 94,6\%.
 
 \pagebreak
 
-Si può notare infatti che un'immagine Face ha tendenzialmente valori più bassi
+\hypertarget{spiegazione-metodi}{%
+\subsection{Spiegazione metodi}\label{spiegazione-metodi}}
+
+Si può notare che un'immagine \emph{Face} ha tendenzialmente valori più bassi
 (quindi più vicini alla camera) verso il centro della matrice (causati
-dalla presenta della faccia, del naso, ecc.), cosa che non avviene nel caso di una NonFace:
+dalla presenta della faccia, del naso, ecc.), cosa che non avviene nel caso di una \emph{NonFace}:
 
 \begin{figure}
 \centering
@@ -172,10 +175,14 @@ dalla presenta della faccia, del naso, ecc.), cosa che non avviene nel caso di u
 \caption{Confronto di Face e NonFace}
 \end{figure}
 
-Si nota inoltre che la parabola di una Face è per forza di cose convessa.
-\newline
+Questo ci porta ad usare il metodo del curve fit per cercare una parabola che sulla riga centrale della matrice.
+Il controllo sull'esistenza della parabola porta al controllo \textbf{PARABOLIC EXISTENCE}
 
-Il marginRate è stato invece scelto sulla base del miglior compromesso tra Precision e Recall.
+Si nota inoltre che la parabola di una Face è per forza di cose convessa. Quindi nel caso questa non sia convessa possiamo assumere che sia una NonFace. Da qui il \textbf{CONCAVITY CHECK}.
+
+Infine il fatto che la parabola abbia il vertice verso il centro il centro della riga, ci porta al controllo \textbf{VERTEX POSITION}.
+
+Il \emph{marginRate} del controllo VERTEX POSITION è stato scelto sulla base del miglior compromesso tra Precision e Recall.
 
 \begin{figure}
 \centering
@@ -185,17 +192,17 @@ Il marginRate è stato invece scelto sulla base del miglior compromesso tra Prec
 \caption{Scelta marginRate}
 \end{figure}
 
-Come si può vedere nel grafico all'aumentare del marginRate la Precision
+Come si può vedere nel grafico all'aumentare del \emph{marginRate} la Precision dei 3 metodi usati insieme 
 aumenta a discapito del Recall.
 
-E' stato scelto per questo come compromesso un marginRate di 0,48 che permette un Recall del 60,4\% ed una Precision di 93,4\%.
+E' stato scelto per questo come compromesso un \emph{marginRate} di 0,48 che permette un Recall del 60,4\% ed una Precision di 93,4\%.
 
 \pagebreak 
 
 \hypertarget{pseudocodice}{%
 \subsection{Pseudocodice}\label{pseudocodice}}
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}[basicstyle=\small, mathescape=true]
 marginRate = 0.48;
 Per ogni elemento con indice i di DepthDATA:
   matrix = DepthDATA{i}{2}; 
@@ -211,7 +218,7 @@ Per ogni elemento con indice i di DepthDATA:
   marginA = matrixHCenter - marginRate*size(matrix, 2);
   marginB = matrixHCenter + marginRate*size(matrix, 2);
   
-  if(vertice == 0 or vertice < marginA or vertice > marginB or coefficientValues(1) <= 0):
+  if(vertice == 0 or vertice $\notin$ [marginA, marginB] or coefficientValues(1) <= 0):
       //contrassegno come NonFace
   else:
       //contrassegno come Face
@@ -221,6 +228,8 @@ Per ogni elemento con indice i di DepthDATA:
 \hypertarget{analisi-complessituxe0-temporale}{%
 \section{Analisi Complessità
 Temporale}\label{analisi-complessituxe0-temporale}}
+
+$lol \notin ciao$
 
 Per analizzare la complessità del metodo si tiene conto della
 complessità temporale delle seguenti funzioni utilizzate:
@@ -233,6 +242,8 @@ complessità temporale delle seguenti funzioni utilizzate:
   transpose \(= O(1)\)
 \item
   fit \(= O(1)\)
+\item
+  clearZeros \(= O(\sqrt[2]{m}) \)
 \end{itemize}
 
 Per ognuna delle precedenti funzioni sono stati calcolati i vari tempi
@@ -249,7 +260,7 @@ D'ora in avanti considereremo:
   m = dimensione totale dell'immagine
 \end{itemize}
 
-Il metodo quindi ha complessità temporale pari a \(O(n)\) in
+Il metodo quindi ha complessità temporale pari a \(O(n \cdot \sqrt[2]{m})\) in
 quanto viene effettuato il fit solo sulla riga centrale e non vengono analizzati tutti gli elementi della matrice.
 
 \hypertarget{risultati-e-prestazione-del-metodo}{%
@@ -299,7 +310,7 @@ Purtroppo in questo caso la Precision alta è a discapito del Recall.
 \hypertarget{Analisi degli errori}{%
 \subsection{Analisi degli errori}\label{Analisi degli errori}}
 
-Di seguito vengono mostrate due immagini contrassegnate come FalsePositive(Face individuate come NonFace).
+Di seguito vengono mostrate due immagini contrassegnate come False Positive (Face individuate come NonFace).
 
 \begin{figure}
 \centering
@@ -307,11 +318,11 @@ Di seguito vengono mostrate due immagini contrassegnate come FalsePositive(Face 
 \qquad
 \subfloat[\centering immagine a colori dell'area relativa alla depth map con "cornice aggiuntiva"]{{\includegraphics[width=4cm]{img/229-2.png} }}%
 \qquad
-\subfloat[\centering Regressione parabolica sulla riga centrale una volta tolti i valori a 0]{{\includegraphics[width=4cm]{img/229-3.png} }}%
+\subfloat[\centering regressione parabolica sulla riga centrale della depthmap senza cornice una volta tolti i valori a 0]{{\includegraphics[width=4cm]{img/229-3.png} }}%
 \caption{Immagine 229}
 \end{figure}
-Nella figura 3 si può notare che il metodo non funziona correttamente quanto non è presente tutto il viso nell'immagine senza cornice.
-In questo caso infatti il vertice della regressione parabolica si trova a circa -15.
+Nella figura 3 si può notare che il metodo non funziona correttamente quando non è presente tutto il viso nell'immagine senza cornice.\newline
+In questo caso infatti il vertice della regressione parabolica si trova a circa -15 e passa il \textbf{vertex position check}  che lo identifica come \emph{NonFace}.
 
 \begin{figure}
 \centering
@@ -319,15 +330,15 @@ In questo caso infatti il vertice della regressione parabolica si trova a circa 
 \qquad
 \subfloat[\centering immagine a colori dell'area relativa alla depth map con "cornice aggiuntiva"]{{\includegraphics[width=4cm]{img/458-2.png} }}%
 \qquad
-\subfloat[\centering Regressione parabolica sulla riga centrale una volta tolti i valori a 0]{{\includegraphics[width=4cm]{img/458-3.png} }}%
+\subfloat[\centering regressione parabolica sulla riga centrale della depthmap senza cornice una volta tolti i valori a 0]{{\includegraphics[width=4cm]{img/458-3.png} }}%
 \caption{Immagine 458}
 \end{figure}
-Nella figura 4 si può notare che il metodo non funziona correttamente quanto è presente un oggetto che copre parzialmente il volto.
-In questo caso infatti la regressione parabolica non soddisfa il concavity check.
+Nella figura 4 si può notare che il metodo non funziona correttamente quando è presente un oggetto che copre parzialmente il volto.
+In questo caso infatti la regressione parabolica soddisfa il \textbf{concavity check} venendo contrassegnata appunto come NonFace.
 
 \pagebreak
 
-Ora invece verranno analizzate due immagini contrassegnate come FalseNegative (NonFace individuate come Face).
+Ora invece verranno analizzate due immagini contrassegnate come False Negative (NonFace individuate come Face).
 
 \begin{figure}
 \centering
@@ -335,10 +346,10 @@ Ora invece verranno analizzate due immagini contrassegnate come FalseNegative (N
 \qquad
 \subfloat[\centering immagine a colori dell'area relativa alla depth map con "cornice aggiuntiva"]{{\includegraphics[width=4cm]{img/75-2.png} }}%
 \qquad
-\subfloat[\centering Regressione parabolica sulla riga centrale una volta tolti i valori a 0]{{\includegraphics[width=4cm]{img/75-3.png} }}%
+\subfloat[\centering regressione parabolica sulla riga centrale della depthmap senza cornice una volta tolti i valori a 0]{{\includegraphics[width=4cm]{img/75-3.png} }}%
 \caption{Immagine 75}
 \end{figure}
-La figura 5 mostra un caso in cui un oggetto di dimensione medio/piccola è posizionato al centro dell'immagine, questo infatti fa in modo che il metodo lo riconosca come Face perchè la sua regressione parabolica è pressochè indistenguibile da quella di una vera Face.
+La figura 5 mostra un caso in cui un oggetto di dimensione medio/piccola è posizionato al centro dell'immagine, questo infatti fa in modo che il metodo lo riconosca come Face perché la sua regressione parabolica è pressoché indistinguibile da quella di una vera Face.
 
 \begin{figure}
 \centering
@@ -346,10 +357,10 @@ La figura 5 mostra un caso in cui un oggetto di dimensione medio/piccola è posi
 \qquad
 \subfloat[\centering immagine a colori dell'area relativa alla depth map con "cornice aggiuntiva"]{{\includegraphics[width=4cm]{img/1345-2.png} }}%
 \qquad
-\subfloat[\centering Regressione parabolica sulla riga centrale una volta tolti i valori a 0]{{\includegraphics[width=4cm]{img/1345-3.png} }}%
+\subfloat[\centering regressione parabolica sulla riga centrale della depthmap senza cornice una volta tolti i valori a 0]{{\includegraphics[width=4cm]{img/1345-3.png} }}%
 \caption{Immagine 1345}
 \end{figure}
-La figura 6 mostra un caso in cui l'immagine a colori senza cornice aggiuntiva prende un'area con un oggetto chiaramente in primo piano, questo fa in modo che venga individuata come Face visto la sua regressione parabolica.
+La figura 6 mostra un caso in cui l'immagine a colori senza cornice aggiuntiva prende un'area con un oggetto chiaramente in primo piano, questo fa in modo che venga individuata come Face vista la sua regressione parabolica.
 
 \hypertarget{legenda-file}{%
 \section{Legenda file}\label{legenda-file}}
@@ -363,9 +374,6 @@ La figura 6 mostra un caso in cui l'immagine a colori senza cornice aggiuntiva p
 \item
   checkResults.m a partire dal vettore results, conteggia il numero di
   NonFace correttamente individuate o erratamente individuate
-\item
-  fixMatrix.m contiene la funziona fixMatrix che data una matrice di
-  profondità sostituisce i valori 0 con il massimo della profondità
 \item
   testValori.m testa i vari valori di marginRate (da 0.3 a 0.7)
   calcolandone di volta in volta Precision e Recall. Alla fine mostra
