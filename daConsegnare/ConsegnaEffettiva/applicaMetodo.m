@@ -1,7 +1,14 @@
+% Questo metodo applica i tre metodi CONCAVITY CHECK, VERTEX POSITION e
+% PARABOLIC EXISTENCE per individuare le NonFace.
+% marginRate
+% sourceMatrix: Matrice di dati su cui lavorare
+% concavityCheck [OPZIONALE]: 1 se attivare il concavityCheck (default), 0 altrimenti
 function results = applicaMetodo(marginRate, sourceMatrix, concavityCheck)
     concavity = 1;
     if nargin > 2
-        concavity = concavityCheck;
+        if concavityCheck ~= 1
+            concavity = 0;
+        end
     end
     
     results = zeros(size(transpose(sourceMatrix),1), 1); %inizializzo l'array results vuoto
@@ -31,7 +38,9 @@ function results = applicaMetodo(marginRate, sourceMatrix, concavityCheck)
         if size(y, 1) >= 3
 
             f=fit(x,y,'poly2'); % effettuo la regressione parabolica
-
+            
+            % arrotondamento necessario per gestire il comportamento diverso
+            % tra cpu INTEL e AMD
             coefficientValues = round(coeffvalues(f), 15); % estraggo i coefficenti dell'equazione di secondo grado dal fit
 
             vertice = -coefficientValues(2)/(2.*coefficientValues(1)); % individuo il vertice della parabola
